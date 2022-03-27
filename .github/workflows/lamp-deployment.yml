@@ -19,5 +19,5 @@ jobs:
             ansible/playboook.yml
             ansible/inventory.yml
 
-          args: "-c ansible/.ansible-lint"
+  #        args: "-c ansible/.ansible-lint"
 
