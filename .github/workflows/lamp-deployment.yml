@@ -1,0 +1,21 @@
+name: Lamp Deployment 
+
+on: 
+  workflow_dispatch:
+    
+
+jobs:
+  linting:
+    name: Lint Ansible files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+      - name: Ansible Lint
+        uses: ansible-community/ansible-lint-action@v6.0.2
+        with:
+          targets: |
+            ansible/playbook.yml
+            ansible/inventory.yml
+
