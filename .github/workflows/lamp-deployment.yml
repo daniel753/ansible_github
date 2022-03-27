@@ -8,18 +8,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: Lint Ansible Playbook
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v2
-    - name: Linting
-      uses: ansible/ansible-lint-action@c37fb7b4bda2c8cb18f4942716bae9f11b0dc9bc
-      with:
-        targets: |
-          ansible/playbook.yml
-          ansible/inventory.yml
+      # Important: This sets up your GITHUB_WORKSPACE environment variable
+      - uses: actions/checkout@v2
 
-        args: "-c ansible/.ansible-lint"
+      - name: Lint Ansible Playbook
+        # replace `main` with any valid ref, or tags like `v6`
+        uses: ansible/ansible-lint-action@main
+        # optional:
+        with:
+          args: "" # args to pass to ansible-lint command
