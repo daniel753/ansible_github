@@ -41,6 +41,7 @@
 
 - name: Ensure Apache is installed with the correct modules
   hosts: web-servers
+  nonsenses: 
   tasks:
   - name: Ensure Apt is up to date
     apt: update_cache=yes
